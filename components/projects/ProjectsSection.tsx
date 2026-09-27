@@ -38,7 +38,8 @@ export function ProjectsSection() {
 
         const getDistance = () => track.scrollWidth - window.innerWidth;
         const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
-        const scaleSetters = cards.map((el) => gsap.quickTo(el, "scale", { duration: 0.4, ease: "power2.out" }));
+        const scaleXSetters = cards.map((el) => gsap.quickTo(el, "scaleX", { duration: 0.4, ease: "power2.out" }));
+        const scaleYSetters = cards.map((el) => gsap.quickTo(el, "scaleY", { duration: 0.4, ease: "power2.out" }));
 
         const tween = gsap.to(track, {
           x: () => -getDistance(),
@@ -67,7 +68,11 @@ export function ProjectsSection() {
                   closest = i;
                 }
               });
-              cards.forEach((_, i) => scaleSetters[i](i === closest ? 1.04 : 1));
+              cards.forEach((_, i) => {
+                const s = i === closest ? 1.04 : 1;
+                scaleXSetters[i](s);
+                scaleYSetters[i](s);
+              });
             },
           },
         });

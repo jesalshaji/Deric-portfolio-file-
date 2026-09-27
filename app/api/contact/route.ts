@@ -27,7 +27,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, errors }, { status: 422 });
   }
 
-  const webhook = process.env.CONTACT_SHEET_WEBHOOK_URL;
+  const webhook =
+    process.env.CONTACT_SHEET_WEBHOOK_URL ||
+    "https://script.google.com/macros/s/AKfycbzbIKVeg6MW-z0V0FEtdhbR3PMSGONugwdwOgqHBq4L0Vl6S9ly2TIrs9yyTiB734cYPg/exec";
   if (!webhook) {
     console.error("[contact] CONTACT_SHEET_WEBHOOK_URL is not set — submission not stored:", payload);
     return NextResponse.json(

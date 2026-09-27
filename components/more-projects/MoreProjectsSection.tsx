@@ -65,7 +65,7 @@ export function MoreProjectsSection() {
   );
 
   return (
-    <section ref={sectionRef} className="relative bg-void px-6 py-32 sm:px-10 sm:py-40 lg:px-14">
+    <section id="more-projects" ref={sectionRef} className="relative bg-void px-6 py-32 sm:px-10 sm:py-40 lg:px-14">
       <div className="mx-auto max-w-[1600px]">
         <div className="mb-20 overflow-hidden">
           <h2 className="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-tight">

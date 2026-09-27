@@ -62,7 +62,7 @@ export function CaseStudySection() {
   );
 
   return (
-    <section ref={sectionRef} className="relative bg-cream px-6 py-32 text-maroon sm:px-10 sm:py-40 lg:px-14">
+    <section id="case-study" ref={sectionRef} className="relative bg-cream px-6 py-32 text-maroon sm:px-10 sm:py-40 lg:px-14">
       <div className="mx-auto max-w-[1600px]">
         <div className="flex items-start justify-between">
           <p data-cs-fade className="label-text text-maroon/50">

@@ -45,6 +45,7 @@ export function IntroSection() {
 
   return (
     <section
+      id="intro"
       ref={sectionRef}
       className="relative bg-cream px-6 py-32 text-maroon sm:px-10 sm:py-40 lg:px-14"
     >
