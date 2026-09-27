@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-void: #050505;
+  --color-maroon: #100000;
+  --color-burgundy: #240305;
+  --color-crimson-deep: #8f1118;
+  --color-crimson: #d52a2f;
+  --color-cream: #f2f0eb;
+  --color-paper: #ffffff;
+
+  --font-sans: var(--font-inter);
+
+  --breakpoint-xs: 30rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-void);
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+html.no-js body {
+  overflow: visible;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-cream);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: var(--color-cream);
+}
+
+/* Lenis smooth-scroll requires the html/body to allow its own scroll container */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.label-text {
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--color-cream);
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.modal-overlay { animation: modal-fade 0.25s ease-out; }
+.modal-panel { animation: modal-rise 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
