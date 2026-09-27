@@ -39,11 +39,35 @@ export async function POST(req: Request) {
   }
 
   try {
+    const workValue = payload.work;
+    const priceValue = payload.price;
+
+    const dataToSend = {
+      submittedAt: new Date().toISOString(),
+      timestamp: new Date().toLocaleString(),
+      date: new Date().toLocaleDateString(),
+      name: payload.name,
+      // Work / message field aliases so any Apps Script naming works
+      work: workValue,
+      workNeeded: workValue,
+      "Work Needed": workValue,
+      message: workValue,
+      details: workValue,
+      project: workValue,
+      // Budget / price field aliases
+      price: priceValue,
+      budget: priceValue,
+      "Budget": priceValue,
+      // Contact fields
+      email: payload.email,
+      phone: payload.phone,
+    };
+
     const res = await fetch(webhook, {
       method: "POST",
       // text/plain keeps Google Apps Script happy (no CORS preflight / body parsing quirks)
       headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ submittedAt: new Date().toISOString(), ...payload }),
+      body: JSON.stringify(dataToSend),
       redirect: "follow",
     });
     if (!res.ok) throw new Error(`Sheet responded ${res.status}`);
